@@ -8,6 +8,10 @@ FROM python:3.10-alpine as builder
 WORKDIR /usr/src/app
 
 # Set environment variables
+# ENV HTTP_PROXY "http://proxy.fozzy.lan:3128"
+# ENV HTTPS_PROXY "http://proxy.fozzy.lan:3128"
+# ENV http_proxy "http://proxy.fozzy.lan:3128"
+# ENV https_proxy "http://proxy.fozzy.lan:3128"
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
