@@ -4,24 +4,16 @@ services:
   # web container, with django + gunicorn
   web:
     # Берем Dockerfile из каталога src
-    build: ./src
+    build: 
+      context: ./src
+      dockerfile: Dockerfile.prod
     # Запускаем сервер
-    # command: python /code/manage.py runserver 0.0.0.0:8000
-    command: gunicorn config.wsgi:application --reload --bind 0.0.0.0:8000
-    # volumes:
-    #   - static_volume:/home/app/web/staticfiles
-    # куда будут помещены данные из каталога app
-    # volumes:
-    #   - ./src/:/code
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
     # Подключаем статические и медиа файлы
     volumes:
       - ./src:/home/app/web/
       - static_volume:/home/app/web/static
       - media_volume:/home/app/web/media
-    # # Открываем порт 8000 внутри и снаружи
-    # ports:
-    #   - 8000:8000
-    # Открываем порт 8000 наружу
     expose:
       - 8000
     depends_on:

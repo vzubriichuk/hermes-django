@@ -1,3 +1,2 @@
 venv
-src/config/__pycache__/
-src/hermes/__pycache__/
+*__pycache__/
