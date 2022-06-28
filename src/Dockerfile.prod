@@ -18,7 +18,7 @@ ENV PYTHONUNBUFFERED 1
 
 # установка зависимостей psycopg2
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && apk add postgresql-dev gcc python3-dev musl-dev g++ unixodbc unixodbc-dev
 
 # проверка кода через линтер
 RUN pip install flake8
