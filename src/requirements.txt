@@ -5,4 +5,8 @@ tzdata==2022.1
 psycopg2-binary==2.9.3
 python-decouple
 gunicorn==20.0.4
-
+pyodbc==4.0.26
+django-mssql==1.8
+django-pyodbc==1.1.3
+SQLAlchemy==1.3.0
+sql_server.pyodbc
