@@ -8,12 +8,13 @@ services:
       context: ./src
       dockerfile: Dockerfile
     # Запускаем сервер
+    # command: python manage.py runserver 0.0.0.0:8000
     command: gunicorn config.wsgi:application --reload --bind 0.0.0.0:8000
     # Подключаем статические и медиа файлы
     volumes:
-      - ./src:/home/app/web/
-      - static_volume:/home/app/web/static
-      - media_volume:/home/app/web/media
+      - ./src:/usr/src/app/
+      - static_volume:/usr/src/app/static
+      - media_volume:/usr/src/app/media
     expose:
       - 8000
     depends_on:
@@ -26,22 +27,24 @@ services:
       image: postgres:13.0-alpine
       # Внешний том (volueme) и место где он будет подключен внутри контейнера
       volumes:
-        - postgres_data:/var/lib/postgresql/data/
+        - /postgres_data/:/var/lib/postgresql/data/
       environment:
         - POSTGRES_USER=django_user
         - POSTGRES_PASSWORD=django_password
         - POSTGRES_DB=django_db
 
   nginx:
+    restart: always
     build: ./src/nginx
     # Подключаем статические и медиа файлы
     volumes:
-      - static_volume:/home/app/web/static
-      - media_volume:/home/app/web/media
+      - static_volume:/usr/src/app/static
+      - media_volume:/usr/src/app/media
     ports:
       - 1337:80
     depends_on:
       - web
+
   
 
 volumes:

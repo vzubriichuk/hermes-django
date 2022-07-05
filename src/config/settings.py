@@ -87,15 +87,21 @@ DATABASES = {
         "PASSWORD": config("SQL_PASSWORD", "password"),
         "HOST": config("SQL_HOST", "localhost"),
         "PORT": config("SQL_PORT", "5432"),
+    },
+    'analytic': {
+        'ENGINE': 'mssql',
+        'NAME': 'AnalyticReports',
+        'USER': 'j-PaymentDev',
+        'PASSWORD': 'V41m9i1Z90XPpdfaPICy',
+        'HOST': 's-kv-center-s59.officekiev.fozzy.lan',
+        'PORT': '1433',
+
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        },
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
