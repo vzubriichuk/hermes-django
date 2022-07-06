@@ -5,9 +5,13 @@
 FROM python:3.9-slim-bullseye
 
 # set work directory
-WORKDIR /usr/src/app
+WORKDIR /home/app/web
 
 # Set environment variables
+ENV HTTP_PROXY "http://proxy.fozzy.lan:3128"
+ENV HTTPS_PROXY "http://proxy.fozzy.lan:3128"
+ENV http_proxy "http://proxy.fozzy.lan:3128"
+ENV https_proxy "http://proxy.fozzy.lan:3128"
 ENV PYMSSQL_BUILD_WITH_BUNDLED_FREETDS=1
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PYTHONDONTWRITEBYTECODE 1

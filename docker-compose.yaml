@@ -1,5 +1,5 @@
 version: '3.9'
-
+name: hermes-dev
 services:
   # web container, with django + gunicorn
   web:
@@ -12,9 +12,9 @@ services:
     command: gunicorn config.wsgi:application --reload --bind 0.0.0.0:8000
     # Подключаем статические и медиа файлы
     volumes:
-      - ./src:/usr/src/app/
-      - static_volume:/usr/src/app/static
-      - media_volume:/usr/src/app/media
+      - ./src:/home/app/web
+      - static_volume:/home/app/webstatic
+      - media_volume:/home/app/webmedia
     expose:
       - 8000
     depends_on:
@@ -38,10 +38,10 @@ services:
     build: ./src/nginx
     # Подключаем статические и медиа файлы
     volumes:
-      - static_volume:/usr/src/app/static
-      - media_volume:/usr/src/app/media
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
     ports:
-      - 1337:80
+      - 1338:80
     depends_on:
       - web
 

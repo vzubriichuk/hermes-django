@@ -90,10 +90,10 @@ DATABASES = {
     },
     'analytic': {
         'ENGINE': 'mssql',
-        'NAME': 'AnalyticReports',
-        'USER': 'j-PaymentDev',
-        'PASSWORD': 'V41m9i1Z90XPpdfaPICy',
-        'HOST': 's-kv-center-s59.officekiev.fozzy.lan',
+        'NAME': config("ANALYTIC_DB"),
+        'USER': config("ANALYTIC_USER"),
+        'PASSWORD': config("ANALYTIC_PASSWORD"),
+        'HOST': config("ANALYTIC_HOST"),
         'PORT': '1433',
 
         'OPTIONS': {
